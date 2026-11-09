@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>quadrat. 瑞特滋排块图鉴</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon-180.png">
+<link rel="manifest" href="manifest.json">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{font-size:16px}
+body{font-family:"Helvetica Neue",-apple-system,"PingFang SC","Noto Sans SC",sans-serif;
+ background:#F7F5F0;color:#1A1A1A;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:480px;margin:0 auto;padding:0 16px 90px}
+/* ===== 头部 ===== */
+header{padding:54px 0 8px;text-align:center}
+.qtop{display:flex;justify-content:center;gap:6px;margin-bottom:18px}
+.qtop span{width:13px;height:13px;display:block}
+.brand{font-size:.68rem;letter-spacing:.34em;color:#8A857C;text-transform:uppercase;margin-bottom:10px}
+h1{font-size:3.1rem;font-weight:900;letter-spacing:-.03em;line-height:1;color:#111}
+h1 em{font-style:normal;color:#E4002B}
+.tag{margin-top:12px;font-size:.86rem;color:#5C574E}
+.slogan{margin:16px auto 0;display:inline-block;background:#111;color:#F7F5F0;
+ padding:7px 16px;font-size:.72rem;letter-spacing:.22em;font-weight:600}
+.slogan b{color:#FFD200}
+/* 品牌档案条 */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#E3DFD5;
+ border:1px solid #E3DFD5;margin-top:26px}
+.facts div{background:#fff;padding:10px 4px;text-align:center}
+.facts b{display:block;font-size:1.05rem;font-weight:800;color:#111}
+.facts i{font-style:normal;font-size:.6rem;color:#8A857C;letter-spacing:.05em}
+.story{background:#fff;border:1px solid #E3DFD5;padding:16px 18px;margin-top:14px;
+ font-size:.83rem;color:#4A463E}
+.story b{color:#111}
+/* ===== 分组 ===== */
+.grp{margin-top:38px}
+.ghead{display:flex;align-items:baseline;gap:12px;border-bottom:3px solid #111;padding-bottom:8px}
+.gno{font-weight:900;font-size:.85rem;color:#E4002B}
+.gzh{font-size:1.3rem;font-weight:900;letter-spacing:.02em}
+.gde{font-size:.66rem;letter-spacing:.2em;color:#8A857C;margin-left:auto}
+.gdesc{font-size:.76rem;color:#6B665C;margin-top:7px}
+/* ===== 卡 ===== */
+.card{background:#fff;border:1px solid #E3DFD5;margin-top:14px;display:flex;flex-direction:column}
+.cimg{position:relative;aspect-ratio:1;overflow:hidden;border-bottom:1px solid #E3DFD5}
+.cimg img{width:100%;height:100%;object-fit:cover;display:block}
+.tasted{position:absolute;right:10px;bottom:10px;background:rgba(17,17,17,.85);color:#fff;
+ border:1.5px solid #FFD200;font-size:.68rem;font-weight:700;letter-spacing:.08em;
+ padding:6px 12px;cursor:pointer}
+.card.on .tasted{background:#FFD200;color:#111}
+.cbody{padding:14px 16px 15px}
+.crow{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.czh{font-size:1.06rem;font-weight:800;letter-spacing:.01em}
+.cno{font-size:.66rem;color:#E4002B;font-weight:800;letter-spacing:.12em}
+.cde{font-size:.68rem;color:#8A857C;margin-top:3px;letter-spacing:.04em}
+.cdesc{font-size:.82rem;color:#44403A;margin-top:9px}
+/* ===== 底部 ===== */
+.stat{position:fixed;bottom:0;left:0;right:0;background:#111;color:#F7F5F0;z-index:50;
+ padding:11px 16px calc(11px + env(safe-area-inset-bottom));display:flex;align-items:center;
+ justify-content:center;gap:10px;font-size:.78rem;letter-spacing:.05em}
+.stat b{color:#FFD200;font-size:.95rem}
+.master{margin-top:34px;text-align:center;padding:26px 16px;border:3px solid #111;display:none;position:relative}
+.master.show{display:block}
+.master .mb1{font-size:1.4rem;font-weight:900;letter-spacing:.04em}
+.master .mb2{font-size:.72rem;letter-spacing:.26em;color:#8A857C;margin-top:6px}
+.master .stamp{position:absolute;top:-16px;right:12px;transform:rotate(9deg);
+ border:2.5px solid #E4002B;color:#E4002B;border-radius:50%;width:78px;height:78px;
+ display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:900;
+ text-align:center;line-height:1.3;background:#F7F5F0}
+.foot{margin-top:30px;text-align:center;font-size:.66rem;color:#8A857C;line-height:1.9}
+.foot a{color:#5C574E}
+#toast{position:fixed;left:50%;bottom:64px;transform:translateX(-50%) translateY(20px);
+ background:#111;color:#FFD200;font-size:.75rem;padding:9px 18px;letter-spacing:.06em;
+ opacity:0;transition:.25s;pointer-events:none;z-index:99;font-weight:600}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <header>
+  <div class="qtop" id="qtop"></div>
+  <div class="brand">seit 1912 · waldenbuch</div>
+  <h1>quadra<em>t.</em></h1>
+  <div class="tag">德国进口 · 瑞特滋排块巧克力图鉴<br>18 种口味 · 每款有图有名有简介</div>
+  <div class="slogan">QUADRATISCH. <b>PRAKTISCH.</b> GUT.</div>
+  <div class="facts">
+   <div><b>1912</b><i>创立于德国</i></div>
+   <div><b>100g</b><i>方块排块</i></div>
+   <div><b>16</b><i>小块网格</i></div>
+   <div><b>100+</b><i>行销国家</i></div>
+  </div>
+  <div class="story">
+   <b>为什么是方的？</b> 1932 年，创始人 Clara Ritter 提出一个朴素的主意：做一块
+   <b>能放进每个人外套口袋、又不折断的巧克力</b>——方形包装由此诞生，并成为百年专利美学。
+   「方方正正，实实在在，好吃。」官方德语口号一用就是九十年。
+  </div>
+ </header>
+ <div id="list"></div>
+ <div class="master" id="master">
+  <div class="stamp">SCHOKO<br>PROFI<br>✓</div>
+  <div class="mb1">巧克力行家 · 集齐 18 块</div>
+  <div class="mb2">ALLES PROBIERT. ALLES GUT.</div>
+  <div style="margin-top:10px;font-size:.78rem;color:#5C574E">从红色经典到 81% 加纳，你把彩虹吃完了。</div>
+ </div>
+ <div class="foot">
+  图片来源：Ritter Sport 官网及授权渠道商品图 · 口味清单为中国市场在售口径<br>
+  quadrat. 是巧克力图鉴页 · 与品牌无官方关联 · 非广告
+ </div>
+</div>
+<div class="stat" id="stat"><b>0</b> / 18 块尝过 · 点击图片右下角「尝过」盖章</div>
+<div id="toast"></div>
+<script>
+var F=[{"no": 1, "grp": 0, "zh": "碳烤花生夹心", "de": "Erdnuss geröstet", "en": "Roasted Peanut", "desc": "碳烤盐渍花生嵌进丝滑牛奶巧克力，咸甜拉扯是它的灵魂——花生控的入坑款。花生含量给到 25%，每一口都有完整颗粒感。"}, {"no": 2, "grp": 0, "zh": "爽脆扁桃仁黑巧", "de": "Mandel Dunkel", "en": "Crunchy Almond Dark", "desc": "香烤扁桃仁遇上浓醇黑巧克力，坚果的油脂香把可可的苦衬得干净利落。脆度与苦度双高，是不爱甜口的坚果党首选。"}, {"no": 4, "grp": 0, "zh": "全榛子牛奶", "de": "Haselnuss", "en": "Whole Hazelnuts Milk", "desc": "红色经典款，瑞特滋的门面。丝滑牛奶巧克力里嵌满整颗脆烤榛子，甜、脆、奶香三拍子齐了。几乎所有人的第一块瑞特滋。"}, {"no": 5, "grp": 0, "zh": "全榛子黑巧", "de": "Dunkle Voll-Nuss", "en": "Whole Hazelnuts Dark", "desc": "50% 黑巧搭配整颗榛子——可可的微苦先到，榛子的焦香跟上，尾韵干净。红款的成熟版，下午咖啡的黄金搭档。"}, {"no": 13, "grp": 0, "zh": "葡萄干榛子", "de": "Trauben Nuss", "en": "Raisins & Hazelnuts", "desc": "酒红色包装的隐藏款。加州阳光葡萄干的甜润+脆烤榛子的香，奶巧做粘合剂——咀嚼层次在这 18 款里排前三。"}, {"no": 14, "grp": 0, "zh": "全榛子白巧", "de": "Weiße Voll-Nuss", "en": "White Whole Hazelnuts", "desc": "浓郁白巧+整颗榛子+脆米，甜度最高的坚果款。白巧的奶甜裹着果仁碎响，配黑咖啡刚好压住甜。"}, {"no": 15, "grp": 0, "zh": "全扁桃仁牛奶", "de": "Ganze Mandel", "en": "Whole Almonds Milk", "desc": "绿色经典款，德国家庭的常年囤货。甄选加州扁桃仁整颗嵌入牛奶巧克力，比榛子更硬脆，越嚼越香。"}, {"no": 10, "grp": 1, "zh": "阿尔卑斯牛奶", "de": "Alpenmilch", "en": "Alpine Milk", "desc": "蓝色经典款。阿尔卑斯山区牛奶做的奶油巧克力，奶味是主角——浓、滑、柔，像把牛奶直接凝固成方块。给「什么都不要加」的人。"}, {"no": 11, "grp": 1, "zh": "牛奶巧克力", "de": "Edel-Vollmilch", "en": "Fine Milk Chocolate", "desc": "忠于原味的基准款。35% 可可的黄金比例，甜度奶感平衡得刚刚好——它是评判其他一切口味的对照组。"}, {"no": 3, "grp": 1, "zh": "盐味焦糖夹心", "de": "Gesalzenes Karamell", "en": "Salted Caramel", "desc": "流心焦糖夹心遇上海盐，咸甜交织的成年口味。咬开的瞬间焦糖缓缓渗出——18 款里唯一「流心」，仪式感拉满。"}, {"no": 6, "grp": 1, "zh": "榛子玉米脆", "de": "Knusper-Nuss", "en": "Nut Cornflakes", "desc": "玉米脆片+整颗榛子的双重脆爽，奶巧粘合。咀嚼声最大的一款，追剧伴侣，办公室分食最快清空。"}, {"no": 7, "grp": 1, "zh": "玉米脆夹心咖啡", "de": "Kaffee Knusper", "en": "Coffee Crispy", "desc": "咖啡奶油夹心混着玉米脆片，咖啡香与可可香叠层——一块下肚等于半杯拿铁的心跳。限季限定感，遇到别犹豫。"}, {"no": 8, "grp": 1, "zh": "可可慕斯夹心", "de": "Kakao-Mousse", "en": "Cocoa Mousse", "desc": "入口即化的慕斯夹心，外层浓醇可可——冷一点吃口感更绝，像在吃一块方形熔岩蛋糕。口感党不可错过。"}, {"no": 9, "grp": 1, "zh": "草莓酸乳夹心", "de": "Erdbeer Joghurt", "en": "Strawberry Yogurt", "desc": "粉色少女款。真实草莓果粒+酸奶夹心，酸甜度像草莓味养乐多凝固成的方块。18 款里最清爽的一块。"}, {"no": 12, "grp": 1, "zh": "可可威化饼干夹心", "de": "Kakaokeks", "en": "Cocoa Biscuit", "desc": "黄油威化饼干浸在可可里，脆而不硬、甜而不腻——下午三点的能量补给，办公室抽屉的常驻居民。"}, {"no": 16, "grp": 2, "zh": "61% 尼加拉瓜黑巧", "de": "Nicaragua 61%", "en": "Fine Dark 61%", "desc": "单一产地尼加拉瓜可可，61% 的苦甜平衡点。花香与果酸在前，坚果调收尾——黑巧入门的第一站。"}, {"no": 17, "grp": 2, "zh": "74% 秘鲁黑巧", "de": "Peru 74%", "en": "Fine Dark 74%", "desc": "秘鲁克里奥罗可可豆，74% 偏苦但有层次——莓果酸质明亮，尾韵是烟草与木质调。给开始懂可可的人。"}, {"no": 18, "grp": 2, "zh": "81% 加纳黑巧", "de": "Ghana 81%", "en": "Fine Dark 81%", "desc": "超苦巅峰款。加纳可可豆的浓烈纯可可，81% 的苦里藏着大地感与微微发酵果香——黑巧老饕的终点站，不含糖的那种纯粹。"}],GRPS=[{"zh": "坚果方阵", "de": "DIE NUSSE", "desc": "七款果仁，从入门红款到隐藏酒红"}, {"zh": "缤纷方阵", "de": "DIE BUNTE", "desc": "夹心与脆片的八重奏，咸甜酸苦都有"}, {"zh": "可可方阵", "de": "DIE KAKAO", "desc": "单一产地三部曲，61 → 74 → 81 的苦味进阶"}];
+var COLS=['#E4002B','#FFD200','#1F7A8C','#3E8E5A','#E86A1E','#7B4B94','#111111'];
+var qt=document.getElementById('qtop');
+for(var i=0;i<7;i++){var s=document.createElement('span');s.style.background=COLS[i];qt.appendChild(s)}
+var lit=JSON.parse(localStorage.getItem('qd_lit')||'[]');
+function save(){localStorage.setItem('qd_lit',JSON.stringify(lit))}
+function isLit(n){return lit.indexOf(n)>=0}
+function toast(s){var t=document.getElementById('toast');t.textContent=s;t.classList.add('show');
+ clearTimeout(window.tt);window.tt=setTimeout(function(){t.classList.remove('show')},1600)}
+function tg(n){
+ if(isLit(n)){lit.splice(lit.indexOf(n),1);toast('已擦掉第 '+n+' 块的章')}
+ else{lit.push(n);toast('第 '+n+' 块 ✓ 尝过！')}
+ save();render();
+}
+function render(){
+ var l=document.getElementById('list');l.innerHTML='';
+ GRPS.forEach(function(g,gi){
+  var gr=document.createElement('div');gr.className='grp';
+  gr.innerHTML='<div class="ghead"><span class="gno">0'+(gi+1)+'</span><span class="gzh">'+g.zh+
+   '</span><span class="gde">'+g.de+'</span></div><div class="gdesc">'+g.desc+'</div>';
+  F.filter(function(x){return x.grp===gi}).forEach(function(x){
+   var c=document.createElement('div');c.className='card'+(isLit(x.no)?' on':'');
+   c.innerHTML='<div class="cimg"><img loading="lazy" src="img/f'+(x.no<10?'0':'')+x.no+'.jpg" alt="'+x.zh+'">'+
+    '<div class="tasted">'+(isLit(x.no)?'✓ 尝过':'尝过')+'</div></div>'+
+    '<div class="cbody"><div class="crow"><span class="cno">N°'+(x.no<10?'0':'')+x.no+'</span>'+
+    '<span class="czh">'+x.zh+'</span></div>'+
+    '<div class="cde">'+x.de+' · '+x.en+'</div>'+
+    '<div class="cdesc">'+x.desc+'</div></div>';
+   c.querySelector('.tasted').onclick=function(ev){ev.stopPropagation();tg(x.no)};
+   gr.appendChild(c);
+  });
+  l.appendChild(gr);
+ });
+ document.getElementById('stat').innerHTML='<b>'+lit.length+'</b> / 18 块尝过 · 点击图片右下角「尝过」盖章';
+ document.getElementById('master').classList.toggle('show',lit.length===18);
+}
+render();
+</script>
+</body>
+</html>
